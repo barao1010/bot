@@ -1,3 +1,8 @@
+const { Client, GatewayIntentBits } = require('discord.js');
+
+const client = new Client({
+  intents: [GatewayIntentBits.Guilds]
+});
 require('dotenv').config();
 const {
     Client,
@@ -12,6 +17,8 @@ const {
     SlashCommandBuilder
 } = require('discord.js');
 const mongoose = require('mongoose');
+
+const client = new Client({
 
 /* ===========================
    BANCO DE DADOS
@@ -308,18 +315,8 @@ async function iniciarPartida(interaction) {
 /* ===========================
    LOGIN
 =========================== */
+
 client.once('ready', () => {
   console.log(`Logged in as ${client.user.tag}`);
 });
-
 client.login(process.env.TOKEN);
-const express = require("express");
-const app = express();
-
-app.get("/", (req, res) => {
-  res.send("Bot está online!");
-});
-
-app.listen(process.env.PORT || 3000, () => {
-  console.log("Servidor web ativo");
-});
